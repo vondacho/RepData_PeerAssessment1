@@ -10,8 +10,7 @@ The variables included in this dataset are:
 - **date**: The date on which the measurement was taken in YYYY-MM-DD format
 - **interval**: Identifier for the 5-minute interval in which measurement was taken
 
-
-## Data preparation
+# Data preparation
 
 
 ```r
@@ -83,7 +82,7 @@ ggplot(steps.by_day.sum, aes(x = steps)) +
     labs(x = "Encountered daily steps count", y="Frequency")
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-5-1.png)<!-- -->
+![](PA1_template_files/figure-html/steps_by_day_histogram-1.png)<!-- -->
 
 The next table contains the mean and the median of the total number of steps taken per day, applied on the filtered data:
 
@@ -117,7 +116,7 @@ qplot(interval,
       main = "Daily activity")
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-7-1.png)<!-- -->
+![](PA1_template_files/figure-html/average_steps_by_interval_time_series-1.png)<!-- -->
 
 
 ```r
@@ -244,7 +243,7 @@ ggplot(steps.by_day.imputed, aes(x=steps)) +
     labs(x ="Encountered daily steps count", y="Frequency")
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-15-1.png)<!-- -->
+![](PA1_template_files/figure-html/steps_by_day_imputed_histogram-1.png)<!-- -->
 
 The next table compares the mean and the median of the total number of steps taken per day, before and after the cleaning of missing data:
 
@@ -301,4 +300,4 @@ qplot(interval,
   facet_wrap(~ day.type, ncol = 1)
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-18-1.png)<!-- -->
+![](PA1_template_files/figure-html/average_steps_by_interval_imputed_timeseries-1.png)<!-- -->

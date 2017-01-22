@@ -15,7 +15,6 @@ The variables included in this dataset are:
 - **date**: The date on which the measurement was taken in YYYY-MM-DD format
 - **interval**: Identifier for the 5-minute interval in which measurement was taken
 
-
 # Data preparation
 
 ```{r}
@@ -48,7 +47,7 @@ As noticed during the preparation phase, the period of observation is from **`r 
 
 The number of steps is summed per day. The following graph presents the frequency of the different sums over the period of observation.
 
-```{r, results="hide", message=F, warning=F}
+```{r steps_by_day_histogram, results="hide", message=F, warning=F}
 steps.by_day.sum <- summarise(group_by(data.noNA, date), steps = sum(steps))
 
 library(ggplot2)
@@ -71,7 +70,7 @@ cbind(data=factor(c("filtered")), steps.summary)
 
 The number of steps is averaged per 5-minutes interval. The following graph presents the different averages over the period of observation..
 
-```{r}
+```{r average_steps_by_interval_time_series}
 steps.by_interval.mean <- aggregate(steps ~ interval, data.noNA, mean)
 
 qplot(interval, 
@@ -140,7 +139,7 @@ This strategy solves our data cleaning problem, the **steps** variable does no m
 sum(is.na(data.noNA$steps))
 ```
 
-```{r, message=F, warning=F}
+```{r steps_by_day_imputed_histogram, message=F, warning=F}
 data.imputed <- data.imputed.2
 steps.by_day.imputed <- aggregate(steps ~ date, data.imputed, sum)
 
@@ -174,7 +173,7 @@ head(data.imputed, 5)
 
 The number of steps is averaged per 5-minutes interval. The following graph presents the different averages over the period of observation.
 
-```{r}
+```{r average_steps_by_interval_imputed_timeseries}
 steps.by_interval.by_daytype.mean <- aggregate(steps ~ interval + day.type, data.imputed, mean)
 
 qplot(interval, 
